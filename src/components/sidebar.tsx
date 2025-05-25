@@ -29,7 +29,7 @@ export function AdminSidebar() {
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/dashboard/settings">Administrateurs</a>
+                <a href="/dashboard/administrators">Administrateurs</a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
