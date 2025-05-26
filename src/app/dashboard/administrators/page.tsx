@@ -1,10 +1,10 @@
 import { getAdministrators } from "@/actions/users";
-import DataTable from "@/components/users/data-table";
-import DataTableSkeleton from "@/components/users/data-table-skeleton";
+import AdministratorsDataTable from "@/components/administrators/administrators-data-table";
+import DataTableSkeleton from "@/components/data-table/data-table-skeleton";
 import { Suspense } from "react";
 
 export default async function AdministratorsPage() {
-  const users = await getAdministrators();
+  const administrators = await getAdministrators();
   return (
     <div className="space-y-6">
       <div>
@@ -13,8 +13,8 @@ export default async function AdministratorsPage() {
           Gérez et consultez la liste des administrateurs de votre application.
         </p>
       </div>
-      <Suspense fallback={<DataTableSkeleton />}>
-        <DataTable users={users} />
+      <Suspense fallback={<DataTableSkeleton columns={4} rows={5} />}>
+        <AdministratorsDataTable administrators={administrators} />
       </Suspense>
     </div>
   );

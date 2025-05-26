@@ -1,6 +1,6 @@
 import { getUsers } from "@/actions/users";
-import DataTable from "@/components/users/data-table";
-import DataTableSkeleton from "@/components/users/data-table-skeleton";
+import DataTableSkeleton from "@/components/data-table/data-table-skeleton";
+import UsersDataTable from "@/components/users/users-data-table";
 import { Suspense } from "react";
 
 export default async function UsersPage() {
@@ -13,8 +13,8 @@ export default async function UsersPage() {
           Gérez et consultez la liste des utilisateurs de votre application.
         </p>
       </div>
-      <Suspense fallback={<DataTableSkeleton />}>
-        <DataTable users={users} />
+      <Suspense fallback={<DataTableSkeleton columns={4} rows={5} />}>
+        <UsersDataTable users={users} />
       </Suspense>
     </div>
   );
