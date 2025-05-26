@@ -4,7 +4,7 @@ import { getAuthToken } from "@/lib/auth";
 
 export async function getUsers() {
   const token = await getAuthToken();
-  const res = await fetch(`${process.env.BACKEND_URL}/users/users`, {
+  const res = await fetch(`${process.env.BACKEND_URL}/users?role=user`, {
     cache: "no-store",
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export async function getUsers() {
 
 export async function getAdministrators() {
   const token = await getAuthToken();
-  const res = await fetch(`${process.env.BACKEND_URL}/users/admins`, {
+  const res = await fetch(`${process.env.BACKEND_URL}/users?role=admin`, {
     cache: "no-store",
     headers: {
       "Content-Type": "application/json",

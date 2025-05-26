@@ -1,6 +1,6 @@
 import { getUsers } from "@/actions/users";
-import DataTable from "@/components/data-table";
-import DataTableSkeleton from "@/components/data-table-skeleton";
+import DataTable from "@/components/users/data-table";
+import DataTableSkeleton from "@/components/users/data-table-skeleton";
 import { Suspense } from "react";
 
 export default async function UsersPage() {

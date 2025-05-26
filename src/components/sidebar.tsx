@@ -34,6 +34,11 @@ export function AdminSidebar() {
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
+                <a href="/dashboard/food-style">Style de cuisine</a>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild>
                 <a href="/dashboard/settings">Paramètres</a>
               </SidebarMenuButton>
             </SidebarMenuItem>
