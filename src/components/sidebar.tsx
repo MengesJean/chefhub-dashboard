@@ -9,6 +9,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Apple, LayoutDashboard, Settings, User, Users } from "lucide-react";
 
 export function AdminSidebar() {
   return (
@@ -19,27 +20,42 @@ export function AdminSidebar() {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/dashboard">Dashboard</a>
+                <a href="/dashboard">
+                  <LayoutDashboard className="w-4 h-4" />
+                  <span>Dashboard</span>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/dashboard/users">Utilisateurs</a>
+                <a href="/dashboard/users">
+                  <Users className="w-4 h-4" />
+                  <span>Utilisateurs</span>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/dashboard/administrators">Administrateurs</a>
+                <a href="/dashboard/administrators">
+                  <User className="w-4 h-4" />
+                  <span>Administrateurs</span>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/dashboard/food-style">Style de cuisine</a>
+                <a href="/dashboard/food-style">
+                  <Apple className="w-4 h-4" />
+                  <span>Style de cuisine</span>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/dashboard/settings">Paramètres</a>
+                <a href="/dashboard/settings">
+                  <Settings className="w-4 h-4" />
+                  <span>Paramètres</span>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>

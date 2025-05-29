@@ -1,10 +1,9 @@
 "use client";
-import DataTable from "@/components/data-table/data-table";
-import { User } from "@/types/users.type";
-import { administratorsTableConfig } from "./administrators-table-config";
+import { BaseUser } from "@/types/users.type";
+import BaseUserDataTable from "../shared/base-user-data-table";
 
 interface AdministratorsDataTableProps {
-  administrators: User[];
+  administrators: BaseUser[];
   loading?: boolean;
 }
 
@@ -13,12 +12,13 @@ const AdministratorsDataTable = ({
   loading = false,
 }: AdministratorsDataTableProps) => {
   return (
-    <DataTable
-      data={administrators}
-      config={administratorsTableConfig}
+    <BaseUserDataTable
+      users={administrators}
       loading={loading}
       emptyMessage="Aucun administrateur trouvé."
       noResultsMessage="Aucun administrateur ne correspond aux critères de recherche."
+      exportFilename="administrateurs.csv"
+      userType="admin"
     />
   );
 };

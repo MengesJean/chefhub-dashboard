@@ -12,7 +12,6 @@ export function middleware(req: NextRequest) {
   }
 
   const token = req.cookies.get("access_token")?.value;
-  console.log("Token is", token);
   if (!token) {
     console.log("No token found, redirecting to login");
     return NextResponse.redirect(new URL("/login", req.url));

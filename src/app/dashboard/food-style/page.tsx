@@ -14,7 +14,7 @@ export default async function FoodStylePage() {
           application.
         </p>
       </div>
-      <Suspense fallback={<DataTableSkeleton columns={2} rows={5} />}>
+      <Suspense fallback={<DataTableSkeleton columns={3} rows={5} />}>
         <FoodStyleDataTable foodStyles={foodStyles} />
       </Suspense>
     </div>
