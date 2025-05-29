@@ -18,7 +18,6 @@ export async function getUsers() {
   }
 
   const data = await res.json();
-  console.log("API Response for users:", data);
 
   // Vérifier que data est un array
   if (!Array.isArray(data)) {
@@ -44,7 +43,6 @@ export async function getAdministrators() {
   }
 
   const data = await res.json();
-  console.log("API Response for administrators:", data);
 
   // Vérifier que data est un array
   if (!Array.isArray(data)) {

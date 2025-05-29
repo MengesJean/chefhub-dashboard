@@ -43,7 +43,6 @@ export default async function UserProfilePage({
       country,
       foodStyles,
     } = userProfile;
-    console.log(user);
 
     return (
       <div className="space-y-6">
