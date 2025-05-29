@@ -2,6 +2,7 @@
 
 import { getUser } from "@/actions/users";
 import { Button } from "@/components/ui/button";
+import EditUserFoodStylesModal from "@/components/users/edit-user-food-styles-modal";
 import EditUserInfoModal from "@/components/users/edit-user-info-modal";
 import EditUserProfileModal from "@/components/users/edit-user-profile-modal";
 import { Review, UserProfile } from "@/types/users.type";
@@ -36,6 +37,7 @@ export default function UserProfilePage({ params }: UserProfilePageProps) {
   const [loading, setLoading] = useState(true);
   const [showUserInfoModal, setShowUserInfoModal] = useState(false);
   const [showUserProfileModal, setShowUserProfileModal] = useState(false);
+  const [showFoodStylesModal, setShowFoodStylesModal] = useState(false);
 
   // Get the id from params
   useEffect(() => {
@@ -294,11 +296,20 @@ export default function UserProfilePage({ params }: UserProfilePageProps) {
       {/* Styles de cuisine préférés */}
       {foodStyles && foodStyles.length > 0 && (
         <div className="border rounded-lg p-6 bg-card">
-          <div className="mb-4">
+          <div className="mb-4 flex items-center justify-between">
             <h2 className="text-lg font-semibold flex items-center gap-2">
               <Utensils className="h-5 w-5" />
               Styles de cuisine préférés
             </h2>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowFoodStylesModal(true)}
+              className="flex items-center gap-2"
+            >
+              <Edit className="h-4 w-4" />
+              Modifier
+            </Button>
           </div>
           <div className="flex flex-wrap gap-2">
             {foodStyles.map((style: { id: number; name: string }) => (
@@ -310,6 +321,30 @@ export default function UserProfilePage({ params }: UserProfilePageProps) {
               </span>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Section vide si pas de styles pour permettre la modification quand même */}
+      {(!foodStyles || foodStyles.length === 0) && (
+        <div className="border rounded-lg p-6 bg-card">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-lg font-semibold flex items-center gap-2">
+              <Utensils className="h-5 w-5" />
+              Styles de cuisine préférés
+            </h2>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowFoodStylesModal(true)}
+              className="flex items-center gap-2"
+            >
+              <Edit className="h-4 w-4" />
+              Modifier
+            </Button>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Aucun style de cuisine sélectionné pour le moment.
+          </p>
         </div>
       )}
 
@@ -506,6 +541,12 @@ export default function UserProfilePage({ params }: UserProfilePageProps) {
             isOpen={showUserProfileModal}
             onClose={() => setShowUserProfileModal(false)}
             onSuccess={handleUserProfileUpdate}
+          />
+          <EditUserFoodStylesModal
+            userProfile={userProfile}
+            isOpen={showFoodStylesModal}
+            onClose={() => setShowFoodStylesModal(false)}
+            onSuccess={handleUserInfoUpdate}
           />
         </>
       )}

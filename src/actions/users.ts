@@ -146,9 +146,9 @@ export async function updateUserProfile(
 ) {
   const token = await getAuthToken();
   const res = await fetch(
-    `${process.env.BACKEND_URL}/users/profile/user/${userId}`,
+    `${process.env.BACKEND_URL}/users/profile/${userId}`,
     {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -159,6 +159,31 @@ export async function updateUserProfile(
 
   if (!res.ok) {
     throw new Error(`Failed to update user profile: ${res.statusText}`);
+  }
+
+  const data = await res.json();
+  return data;
+}
+
+export async function updateUserFoodStyles(
+  userId: string,
+  foodStyleIds: string[]
+) {
+  const token = await getAuthToken();
+  const res = await fetch(
+    `${process.env.BACKEND_URL}/users/profile/user/${userId}/food-styles`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ foodStyleIds }),
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error(`Failed to update user food styles: ${res.statusText}`);
   }
 
   const data = await res.json();
