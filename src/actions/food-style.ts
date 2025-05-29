@@ -14,6 +14,22 @@ export async function getFoodStyles() {
   return data;
 }
 
+export async function getFoodStyle(id: string) {
+  const token = await getAuthToken();
+  const res = await fetch(`${process.env.BACKEND_URL}/food-style/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch food style: ${res.statusText}`);
+  }
+
+  const data = await res.json();
+  return data;
+}
+
 export async function createFoodStyle(formData: FormData) {
   const token = await getAuthToken();
   const name = formData.get("name") as string;

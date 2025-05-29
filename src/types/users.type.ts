@@ -16,6 +16,39 @@ export type BaseUser = {
   updatedAt: string;
 };
 
+export type Review = {
+  id: number;
+  rating: number;
+  comment: string;
+  serviceDate: string;
+  reviewerName: string;
+  reviewerEmail: string | null;
+  userId: number;
+  createdAt: string;
+  updatedAt: string;
+  user: {
+    id: number;
+    email: string;
+    firstName: string;
+    lastName: string;
+    password: string;
+    googleId: string | null;
+    provider: string;
+    role: string;
+    refreshTokenHash: string | null;
+    createdAt: string;
+    updatedAt: string;
+  };
+};
+
+export type ReviewStats = {
+  totalReviews: number;
+  averageRating: number;
+  ratingDistribution: {
+    [key: string]: number;
+  };
+};
+
 export type UserProfile = {
   id: number;
   userId: number;
@@ -31,6 +64,8 @@ export type UserProfile = {
   user: {
     id: number;
     email: string;
+    firstName: string | null;
+    lastName: string | null;
     password: string;
     googleId: string | null;
     provider: string;
@@ -43,4 +78,6 @@ export type UserProfile = {
     id: number;
     name: string;
   }>;
+  reviews?: Review[];
+  reviewStats?: ReviewStats;
 };

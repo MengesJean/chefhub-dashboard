@@ -2,7 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { FoodStyle } from "@/types/food-style.type";
 import { TableConfig } from "@/types/table.types";
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Eye, Trash2 } from "lucide-react";
+import Link from "next/link";
 
 interface FoodStyleTableConfigProps {
   onEdit: (foodStyle: FoodStyle) => void;
@@ -32,9 +33,15 @@ export const createFoodStyleTableConfig = ({
     {
       key: "actions",
       label: "Actions",
-      className: "w-32",
+      className: "w-48",
       render: (_, item) => (
         <div className="flex items-center gap-2">
+          <Link href={`/dashboard/food-style/${item.id}`}>
+            <Button variant="outline" size="sm" className="h-8 w-8 p-0">
+              <Eye className="h-4 w-4" />
+              <span className="sr-only">Voir</span>
+            </Button>
+          </Link>
           <Button
             variant="outline"
             size="sm"

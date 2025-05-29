@@ -105,3 +105,62 @@ export async function getUser(id: string) {
   const data = await res.json();
   return data;
 }
+
+export async function updateUserInfo(
+  id: string,
+  userData: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  }
+) {
+  const token = await getAuthToken();
+  const res = await fetch(`${process.env.BACKEND_URL}/users/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(userData),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to update user info: ${res.statusText}`);
+  }
+
+  const data = await res.json();
+  return data;
+}
+
+export async function updateUserProfile(
+  userId: string,
+  profileData: {
+    description?: string;
+    dateOfBirth?: string;
+    phoneNumber?: string;
+    address?: string;
+    city?: string;
+    postalCode?: string;
+    country?: string;
+  }
+) {
+  const token = await getAuthToken();
+  const res = await fetch(
+    `${process.env.BACKEND_URL}/users/profile/user/${userId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(profileData),
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error(`Failed to update user profile: ${res.statusText}`);
+  }
+
+  const data = await res.json();
+  return data;
+}
